@@ -22,7 +22,10 @@ static createUser(email,password) {
 static retreiveUser(id) {
 
 return db.one('select * from users where id=$1',[id])
-.then(console.log)
+.then(data => {
+    return new Users (id, data.email, data.password);
+})
+// .then(console.log)
 
 
 }
