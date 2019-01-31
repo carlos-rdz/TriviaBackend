@@ -11,9 +11,11 @@ class Users {
 
 
 static createUser(email,password) {
-    return db.any(`insert into users (email, password) values ($1,$2) returning id` , [email,password])
-    .then(console.log)
-    .catch(console.log)
+    return db.one(`insert into users (email, password) values ($1,$2) returning id` , [email,password])
+    .then(data => {
+        return new Users (data.id, email);
+    })
+    // .catch(console.log)
 }
 
 
