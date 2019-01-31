@@ -13,23 +13,19 @@ app.use(bodyParser.json());
 
 
 
-// 
+app.post('/login',(req,res) => {
 
-// users.createUser("Carlos","Password")
-// users.retreiveUser(1) 
-// need to create a user object in order to display
-
-app.get('/user',(req,res) => {
-    users.retreiveUser(1)
-    // .then(user => {console.log(user.email)})
-    .then(userObj => {res.send(userObj)})
-    .catch(err => {
-        res.send(err)
-    })
+let email = req.body.email;
+let password = req.body.password;
+console.log(email,password)
+users.createUser(email,password)
 });
 
 
 
-app.listen(3000, () => {
+
+
+
+app.listen(4000, () => {
     console.log('your express app is readddddy')
 });

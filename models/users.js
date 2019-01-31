@@ -23,7 +23,7 @@ static retreiveUser(id) {
 
 return db.one('select * from users where id=$1',[id])
 .then(data => {
-    return new Users (id, data.email, data.password);
+    return new Users (id, data.email);
 })
 // .then(console.log)
 
